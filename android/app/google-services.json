@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1080931536917",
+    "project_id": "socailnetworkapp-f2e6d",
+    "storage_bucket": "socailnetworkapp-f2e6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080931536917:android:07c27ef2a78f28bc837e1c",
+        "android_client_info": {
+          "package_name": "cuong.vn.socail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080931536917-905uvl4pt3ep0ll4f145od00sgn5n65s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cuong.vn.socail",
+            "certificate_hash": "c2f09445144eec067188fa9c0e9d75ff4fc98163"
+          }
+        },
+        {
+          "client_id": "1080931536917-u4m13pioccngqd8bf6u9rlqmpedh95m8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUlMMIMJdeXWOWo6Tu8tETOoYuTubpn6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080931536917-u4m13pioccngqd8bf6u9rlqmpedh95m8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
