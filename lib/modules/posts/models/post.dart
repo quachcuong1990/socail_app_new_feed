@@ -3,6 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:socail/modules/posts/models/photo.dart';
 import 'package:socail/modules/posts/models/picture.dart';
 
+import '../../../models/user.dart';
+
 part 'post.g.dart';
 
 @JsonSerializable()
@@ -18,12 +20,16 @@ class Post {
 
   @JsonKey(name: 'description', includeIfNull: false)
   final String? description;
+  @JsonKey(name: 'created_at', includeIfNull: false)
+  final String? created_at;
 
   @JsonKey(name: 'images', includeIfNull: false)
   final List<Picture>? images;
 
   @JsonKey(name: 'photos', includeIfNull: false)
   final List<Photo>? photos;
+  @JsonKey(name: 'user', includeIfNull: false)
+  final User? user;
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 
@@ -32,9 +38,14 @@ class Post {
     this.status,
     this.title,
     this.description,
+    this.created_at,
     this.images,
     this.photos,
+    this.user
   });
+  String? get urlUserAvatar => user?.imgUrl;
+
+  String get displayName => user?.displayName ?? '';
 
   Map<String, dynamic> toJson() => _$PostToJson(this);
 }

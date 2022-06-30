@@ -28,15 +28,15 @@ class CircleAvatarBorder extends StatelessWidget {
         child: CachedNetworkImage(
           imageUrl: avatarUrl!,
           errorWidget: (ctx, str, obj) => Container(
-            child: Icon(
-              Icons.person,
-              size: size - 10,
-              color: AppColors.likeColor,
-            ),
             alignment: Alignment.center,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.blueColor,
+            ),
+            child: Icon(
+              Icons.person,
+              size: size - 10,
+              color: AppColors.likeColor,
             ),
           ),
         ),

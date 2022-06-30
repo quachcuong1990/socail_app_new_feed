@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:socail/modules/posts/widgets/post_item.dart';
+import 'package:socail/values/app_colors.dart';
 
 import '../../../blocs/app_state_bloc.dart';
 import '../../../providers/bloc_provider.dart';
@@ -23,49 +25,74 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('List posts page'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              appStateBloc!.changeAppState(AppState.unAuthorized);
-            },
-          ),
-        ],
-      ),
+      backgroundColor: GradientAppColor.bg_copy,
+      // appBar: AppBar(
+      //   backgroundColor: GradientAppColor.bg_copy,
+      //   title: const Text('List posts page'),
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.logout),
+      //       onPressed: () {
+      //         appStateBloc!.changeAppState(AppState.unAuthorized);
+      //       },
+      //     ),
+      //   ],
+      // ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.pushNamed(context, RouteName.createPostPage);
         },
       ),
-      body: StreamBuilder<List<Post>?>(
-          stream: bloc!.postsStream,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              final posts = snapshot.data;
-              return ListView.builder(
-                itemBuilder: (_, int index) {
-                  final item = posts![index];
-                  return PostItem2(
-                    // height: 200,
-                    item: item,
-                    description: item.description!,
+      body: Column(
+        children: [
+           Container(
+             margin: const EdgeInsets.only(left: 14.0,top: 48.0),
+             height: 36,
+             child: TextField(
+               style: const TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: AppColors.greyColor1,
+                hintText: 'Search here',
+                prefixIcon: Icon(Icons.search),
+                prefixIconColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                  borderSide: BorderSide.none
+                )
+              ),
+          ),
+           ),
+          Flexible(
+            child: StreamBuilder<List<Post>?>(
+                stream: bloc!.postsStream,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final posts = snapshot.data;
+                    return ListView.builder(
+                      itemBuilder: (_, int index) {
+                        final item = posts![index];
+                        return PostItem(
+                          // height: 200,
+                          post: item,
+                        );
+                      },
+                      itemCount: posts?.length ?? 0,
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text(snapshot.error.toString()),
+                    );
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
                   );
-                },
-                itemCount: posts?.length ?? 0,
-              );
-            }
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error.toString()),
-              );
-            }
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }),
+                }),
+          ),
+        ],
+      ),
     );
   }
 }

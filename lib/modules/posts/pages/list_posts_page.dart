@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:socail/modules/posts/widgets/post_item.dart';
 
 import '../../dashboard/widgets/post_item_2.dart';
 import '../../tags/pages/tag_search_delegate.dart';
@@ -43,10 +44,8 @@ class _ListPostsPageState extends State<ListPostsPage> {
             return ListView.builder(
               itemBuilder: (_, int index) {
                 final item = posts[index];
-                return PostItem2(
-                  height: 200,
-                  // url: item.images?.first.url ?? '',
-                  description: item.description!, item: item,
+                return PostItem(
+                   post: item,
                 );
               },
               itemCount: posts.length,

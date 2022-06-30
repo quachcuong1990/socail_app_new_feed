@@ -1,5 +1,5 @@
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'auth_plugin.dart';
 
 class AuthGmail implements AuthLogin {
@@ -30,6 +30,14 @@ class AuthGmail implements AuthLogin {
       }
       final googleSignInAuthentication =
           await googleSignInAccount.authentication;
+
+      print('Token : ${googleSignInAuthentication.accessToken}');
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication?.accessToken,
+        idToken: googleSignInAuthentication?.idToken,
+      );
+      final firebaseAccount = await FirebaseAuth.instance.signInWithCredential(credential);
+      print('FirebaseAccountvip=$firebaseAccount');
       return AuthResult(
         LoginStatus.loggedIn,
         googleSignInAuthentication.accessToken,

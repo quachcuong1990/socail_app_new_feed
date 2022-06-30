@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:socail/pages/login_page.dart';
 import 'package:socail/pages/sign_up_page.dart';
-import 'package:socail/pages/welcome_page.dart';
+import 'package:socail/pages/welcome_page_demo.dart';
 
 import '../blocs/app_state_bloc.dart';
 import '../modules/authentication/bloc/authentication_bloc.dart';

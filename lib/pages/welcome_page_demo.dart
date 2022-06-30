@@ -5,8 +5,8 @@ import 'package:socail/values/app_assets.dart';
 import 'package:socail/values/app_colors.dart';
 import 'package:socail/values/app_styles.dart';
 import 'package:socail/widgets/app_buttons.dart';
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+class WelcomePage_Demo extends StatelessWidget {
+  const WelcomePage_Demo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +107,8 @@ class WelcomePage extends StatelessWidget {
     print('token ${googleAuth?.accessToken}');
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    final firebaseAccount = await FirebaseAuth.instance.signInWithCredential(credential);
+    print('FirebaseAccount=$firebaseAccount');
+    return firebaseAccount;
   }
 }
