@@ -21,6 +21,7 @@ class Picture {
   @JsonKey(name: 'cloud_name', includeIfNull: false)
   final String? cloudName;
 
+
   Picture({
      this.url,
      this.orgWidth,
@@ -28,6 +29,11 @@ class Picture {
      this.orgUrl,
     this.cloudName
   });
+
+
+  String get imgUrl => url??'';
+
+
 
   // String fullSizeUrl({int maxSize = 2048}) {
   //   return (orgHeight > 2048) ? '$url?h=$maxSize' : url;

@@ -7,8 +7,9 @@ part of 'categories.dart';
 // **************************************************************************
 
 Categories _$CategoriesFromJson(Map<String, dynamic> json) => Categories(
+      title: json['title'] as String?,
       description: json['description'] as String?,
-      image: (json['image'] as List<dynamic>?)
+      images: (json['photos'] as List<dynamic>?)
           ?.map((e) => Picture.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -22,7 +23,8 @@ Map<String, dynamic> _$CategoriesToJson(Categories instance) {
     }
   }
 
+  writeNotNull('title', instance.title);
   writeNotNull('description', instance.description);
-  writeNotNull('image', instance.image);
+  writeNotNull('photos', instance.images);
   return val;
 }

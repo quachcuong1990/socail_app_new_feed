@@ -1,9 +1,7 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:socail/modules/categories/models/categories.dart';
-import 'package:socail/modules/categories/models/duongdan.dart';
 import 'package:socail/modules/categories/repository/list_categories_repo.dart';
 import '../../../providers/bloc_provider.dart';
-import '../models/category.dart';
 
 class ListCategoriesRxDartBloc extends BlocBase{
   final _categoriesCtrl = BehaviorSubject<List<Categories>?>.seeded([]);

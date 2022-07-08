@@ -3,19 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:socail/common/widgets/stateless/circle_avatar_border.dart';
 import 'package:socail/modules/categories/blocs/list_categories_rxdart_bloc.dart';
 import 'package:socail/modules/categories/models/categories.dart';
-import 'package:socail/modules/categories/models/duongdan.dart';
 import 'package:socail/modules/posts/widgets/post_item.dart';
 import 'package:socail/values/app_colors.dart';
 import '../../../blocs/app_state_bloc.dart';
 import '../../../providers/bloc_provider.dart';
 import '../../../route/route_name.dart';
 import '../../../values/app_styles.dart';
-import '../../categories/models/category.dart';
 import '../../categories/widgets/categories_item.dart';
 import '../../posts/blocs/list_posts_rxdart_bloc.dart';
 import '../../posts/models/post.dart';
-import '../widgets/post_item_2.dart';
-
+import '../../posts/models/photo.dart';
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
@@ -115,13 +112,12 @@ class _DashboardPageState extends State<DashboardPage> {
                   builder: (context,snapshot){
                   if(snapshot.hasData){
                     final categories = snapshot.data;
-                    print('categories : ${categories}');
                     return ListView.builder(
                       shrinkWrap: true,
                         itemBuilder: (_,int index){
-                          final item = categories![index];
+                          final item = categories![index].images;
                           print('object==${item}');
-                          return   CategoriesItem(categories: item,);
+                          return   CategoriesItem(picture: item,);
                         },
                       itemCount: categories!.length,
                         );

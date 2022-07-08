@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:socail/modules/categories/models/duongdan.dart';
-import '../models/categories.dart';
-import '../models/category.dart';
+import 'package:socail/modules/categories/models/categories.dart';
+
 class ListCategoriesRepo{
   Future<List<Categories>?> getCategoriesData()async{
     try{

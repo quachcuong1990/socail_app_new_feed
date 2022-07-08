@@ -3,12 +3,16 @@ import 'package:socail/modules/posts/models/picture.dart';
 part 'categories.g.dart';
 @JsonSerializable()
 class Categories{
+  @JsonKey(name: 'title', includeIfNull: false)
+  final String? title;
   @JsonKey(name: 'description', includeIfNull: false)
   final String? description;
-  @JsonKey(name: 'image', includeIfNull: false)
-  final List<Picture>? image;
+  @JsonKey(name: 'photos', includeIfNull: false)
+  final List<Picture>? images;
 
-  Categories({this.description,this.image});
+  // String get imgurl => images![0].imgUrl ?? '';
+
+  Categories({this.title,this.description,this.images});
 
   factory Categories.fromJson(Map<String,dynamic> json) => _$CategoriesFromJson(json);
 

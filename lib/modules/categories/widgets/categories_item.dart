@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:socail/modules/categories/models/categories.dart';
+import 'package:socail/modules/posts/models/picture.dart';
 
-import '../../posts/models/post.dart';
-import '../models/category.dart';
 
 class CategoriesItem extends StatelessWidget {
-  final Categories? categories;
-  const CategoriesItem({Key? key, this.categories}) : super(key: key);
+  final List<Picture>? picture;
+  const CategoriesItem({Key? key, required this.picture}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(categories!.description??''),
-      ],
+    print('image=====${picture![0].url}');
+    return Container(
     );
   }
 }

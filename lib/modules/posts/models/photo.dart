@@ -50,9 +50,7 @@ class Photo {
   @JsonKey(name: 'liked', includeIfNull: false)
   bool? liked;
 
-  String get url => image?.url ?? '';
-
- // String get timeAgo => StringUtils.calcTimePost(createdAt);
+  // String get timeAgo => StringUtils.calcTimePost(createdAt);
 
   Photo({
     this.id,
@@ -70,6 +68,12 @@ class Photo {
     this.user,
     this.liked,
   });
+  String get url => image?.url ?? '';
+  String get imgurl => image?.imgUrl ?? '';
+
+  // String? get urlImagge => image?.imgUrl??'';
+
+
 
   factory Photo.fromJson(Map<String, dynamic> json) => _$PhotoFromJson(json);
 
