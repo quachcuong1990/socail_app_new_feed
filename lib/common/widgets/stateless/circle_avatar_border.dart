@@ -10,7 +10,7 @@ class CircleAvatarBorder extends StatelessWidget {
   const CircleAvatarBorder({
     Key? key,
     this.avatarUrl,
-    this.size = 32,
+    this.size = 32
   }) : super(key: key);
 
   @override

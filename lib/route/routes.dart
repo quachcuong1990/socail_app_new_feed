@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:socail/modules/posts/pages/demo_page.dart';
 import 'package:socail/modules/posts/pages/list_posts_page.dart';
 import 'package:socail/pages/login_page.dart';
 import 'package:socail/pages/welcome_page_demo.dart';

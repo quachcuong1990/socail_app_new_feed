@@ -5,10 +5,10 @@ part 'categories.g.dart';
 class Categories{
   @JsonKey(name: 'description', includeIfNull: false)
   final String? description;
-  // @JsonKey(name: 'images', includeIfNull: false)
-  // final List<Picture>? images;
+  @JsonKey(name: 'image', includeIfNull: false)
+  final List<Picture>? image;
 
-  Categories({this.description});
+  Categories({this.description,this.image});
 
   factory Categories.fromJson(Map<String,dynamic> json) => _$CategoriesFromJson(json);
 

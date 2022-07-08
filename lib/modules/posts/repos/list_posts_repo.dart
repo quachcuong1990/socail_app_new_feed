@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import '../../../src/day05/models/public.dart';
 import '../models/post.dart';
 

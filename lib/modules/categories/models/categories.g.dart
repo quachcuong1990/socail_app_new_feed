@@ -8,6 +8,9 @@ part of 'categories.dart';
 
 Categories _$CategoriesFromJson(Map<String, dynamic> json) => Categories(
       description: json['description'] as String?,
+      image: (json['image'] as List<dynamic>?)
+          ?.map((e) => Picture.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$CategoriesToJson(Categories instance) {
@@ -20,5 +23,6 @@ Map<String, dynamic> _$CategoriesToJson(Categories instance) {
   }
 
   writeNotNull('description', instance.description);
+  writeNotNull('image', instance.image);
   return val;
 }
