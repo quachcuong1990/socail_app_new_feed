@@ -104,36 +104,36 @@ class _DashboardPageState extends State<DashboardPage> {
                 'Discovery',
                 style: AppStyles.h4,
               )),
-          Container(
-            height: 200,
-            child: Flexible(
-              child: StreamBuilder<List<Categories>?>(
-                stream: _blocCategories!.categoriesStream,
-                  builder: (context,snapshot){
-                  if(snapshot.hasData){
-                    final categories = snapshot.data;
-                    return ListView.builder(
-                      shrinkWrap: true,
-                        itemBuilder: (_,int index){
-                          final item = categories![index].images;
-                          print('object==${item}');
-                          return   CategoriesItem(picture: item,);
-                        },
-                      itemCount: categories!.length,
-                        );
-                  }
-                  if(snapshot.hasError){
-                    return Center(
-                      child: Text(snapshot.error.toString()),
-                    );
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-
-                  }),
-            ),
-          ),
+          // Container(
+          //   height: 200,
+          //   child: Flexible(
+          //     child: StreamBuilder<List<Categories>?>(
+          //       stream: _blocCategories!.categoriesStream,
+          //         builder: (context,snapshot){
+          //         if(snapshot.hasData){
+          //           final categories = snapshot.data;
+          //           return ListView.builder(
+          //             shrinkWrap: true,
+          //               itemBuilder: (_,int index){
+          //                 final item = categories![index].images;
+          //                 print('object==${item}');
+          //                 return   CategoriesItem(picture: item,);
+          //               },
+          //             itemCount: categories!.length,
+          //               );
+          //         }
+          //         if(snapshot.hasError){
+          //           return Center(
+          //             child: Text(snapshot.error.toString()),
+          //           );
+          //         }
+          //         return const Center(
+          //           child: CircularProgressIndicator(),
+          //         );
+          //
+          //         }),
+          //   ),
+          // ),
           const SizedBox(
             height: 19,
           ),

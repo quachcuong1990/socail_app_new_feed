@@ -30,7 +30,14 @@ class Post {
   final List<Photo>? photos;
   @JsonKey(name: 'user', includeIfNull: false)
   final User? user;
+  @JsonKey(name: 'comment_counts', includeIfNull: false)
+  final int? commentCounts;
 
+  @JsonKey(name: 'like_counts', includeIfNull: false)
+  int? likeCounts;
+
+  @JsonKey(name: 'liked', includeIfNull: false)
+  bool? liked;
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 
   Post({
@@ -41,7 +48,10 @@ class Post {
     this.created_at,
     this.images,
     this.photos,
-    this.user
+    this.user,
+    this.liked,
+    this.likeCounts,
+    this.commentCounts
   });
   String? get urlUserAvatar => user?.imgUrl;
 

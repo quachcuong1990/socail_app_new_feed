@@ -21,6 +21,9 @@ Post _$PostFromJson(Map<String, dynamic> json) => Post(
       user: json['user'] == null
           ? null
           : User.fromJson(json['user'] as Map<String, dynamic>),
+      liked: json['liked'] as bool?,
+      likeCounts: json['like_counts'] as int?,
+      commentCounts: json['comment_counts'] as int?,
     );
 
 Map<String, dynamic> _$PostToJson(Post instance) {
@@ -40,5 +43,8 @@ Map<String, dynamic> _$PostToJson(Post instance) {
   writeNotNull('images', instance.images);
   writeNotNull('photos', instance.photos);
   writeNotNull('user', instance.user);
+  writeNotNull('comment_counts', instance.commentCounts);
+  writeNotNull('like_counts', instance.likeCounts);
+  writeNotNull('liked', instance.liked);
   return val;
 }

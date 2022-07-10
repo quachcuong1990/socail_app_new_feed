@@ -1,16 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:socail/modules/posts/pages/demo_page.dart';
-import 'package:socail/modules/posts/pages/list_posts_page.dart';
-import 'package:socail/pages/login_page.dart';
-import 'package:socail/pages/welcome_page_demo.dart';
 import 'package:socail/route/route_name.dart';
-
 import '../modules/authentication/pages/welcome_page.dart';
-import '../modules/dashboard/pages/dashboard_page.dart';
 import '../modules/posts/blocs/list_posts_rxdart_bloc.dart';
 import '../modules/posts/pages/create_post_page.dart';
 import '../providers/bloc_provider.dart';
+import '../modules/posts/pages/dashboard_page.dart';
 
 class Routes {
   static Route authorizedRoute(RouteSettings settings) {

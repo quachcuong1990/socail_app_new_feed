@@ -1,33 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../blocs/app_state_bloc.dart';
+import '../../../common/mixin/scroll_page_mixin.dart';
 import '../../../common/widgets/stateless/activity_indicator.dart';
-import '../../../providers/bloc_provider.dart';
 import '../../../route/route_name.dart';
 import '../blocs/list_posts_rxdart_bloc.dart';
 import '../models/post.dart';
 import '../widgets/post_item_remake.dart';
 
-class ListPostsPage extends StatefulWidget {
-  const ListPostsPage({Key? key}) : super(key: key);
+class ListPostsPagingRepo extends StatefulWidget {
+  const ListPostsPagingRepo({Key? key}) : super(key: key);
 
   @override
-  _ListPostsPageState createState() => _ListPostsPageState();
+  _ListPostsPagingRepoState createState() => _ListPostsPagingRepoState();
 }
 
-class _ListPostsPageState extends State<ListPostsPage> {
+class _ListPostsPagingRepoState extends State<ListPostsPagingRepo> with ScrollPageMixin{
   final _postsBloc = ListPostsRxDartBloc();
-  late final ScrollController _scrollCtrl;
-  AppStateBloc? get appStateBloc => BlocProvider.of<AppStateBloc>(context);
-
+  late final _scrollCtrl = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    // _postsBloc.add('getPosts');
     _postsBloc.getPosts();
-    _scrollCtrl = ScrollController();
   }
 
   @override
@@ -56,9 +51,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
             actions: [
               IconButton(
                   onPressed: () {
-                    appStateBloc!.changeAppState(AppState.unAuthorized);
-
-                    // Navigator.pushNamed(context, '/day09');
+                    Navigator.pushNamed(context, '/day09');
                   },
                   icon: const Icon(Icons.ac_unit))
             ],
@@ -78,13 +71,13 @@ class _ListPostsPageState extends State<ListPostsPage> {
                 if (snapshot.hasError) {
                   return const SliverFillRemaining(
                       child: Center(
-                    child: Text('Something went wrong'),
-                  ));
+                        child: Text('Something went wrong'),
+                      ));
                 }
 
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(
-                    (context, index) {
+                        (context, index) {
                       final post = snapshot.data![index];
                       return PostItemRemake(post: post);
                     },
@@ -96,4 +89,10 @@ class _ListPostsPageState extends State<ListPostsPage> {
       ),
     );
   }
+
+  @override
+  void loadMoreData() => _postsBloc.getPosts();
+
+  @override
+  ScrollController get scrollController => _scrollCtrl;
 }
