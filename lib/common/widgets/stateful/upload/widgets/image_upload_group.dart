@@ -46,10 +46,10 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
   int get maxImage => widget.maxImage;
   int get realMaxImage => maxImage - _listImageParam.where((e) => e.asset==null).length;
   bool get isReady => _listImageParam.where((e) => e.id =="").isEmpty;
-  // List<Asset> get _selectedAsset => _listImageParam.where((e) => e.asset != null)
-  //     .map((e) => e.asset!).toList();
-  List<XFile> get _selectedAsset => _listImageParam.where((e) => e.asset != null)
+  List<Asset> get _selectedAsset => _listImageParam.where((e) => e.asset != null)
       .map((e) => e.asset!).toList();
+  // List<XFile> get _selectedAsset => _listImageParam.where((e) => e.asset != null)
+  //     .map((e) => e.asset!).toList();
   @override
   initState(){
     super.initState();
@@ -132,8 +132,8 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
   void upLoadImage(ImageUploadItem item)async{
     try{
       FormData formData;
-      // var originData = await item.asset!.getByteData();
-      var originData = await item.asset!.readAsBytes();
+      var originData = await item.asset!.getByteData();
+      // var originData = await item.asset!.readAsBytes();
       formData = FormData.fromMap({
         'file': MultipartFile.fromBytes(originData.buffer.asInt8List(),
         filename: '${DateTime.now().microsecond}.jpg'),
@@ -198,11 +198,11 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
     );
   }
   Future<void> chooseAndUploadImage() async {
-    // List<Asset> resultList = <Asset>[];
-    List<XFile>? resultList = [];
-    void _setImageFileListFromFile(XFile? value) {
-      resultList = value == null ? null : <XFile>[value];
-    }
+    List<Asset> resultList = <Asset>[];
+    // List<XFile>? resultList = [];
+    // void _setImageFileListFromFile(XFile? value) {
+    //   resultList = value == null ? null : <XFile>[value];
+    // }
 
     var localListImg = <ImageUploadItem>[];
 
@@ -214,34 +214,34 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
     } else if (currentStatus == PermissionStatus.permanentlyDenied) {
       openAppSettings();
     }
-    final ImagePicker _picker = ImagePicker();
+    // final ImagePicker _picker = ImagePicker();
 
     try {
-      final List<XFile>? pickedFileList = await _picker.pickMultiImage();
-      if(pickedFileList!.isNotEmpty){
-        setState((){
-          resultList = pickedFileList;
+      // final List<XFile>? pickedFileList = await _picker.pickMultiImage();
+      // if(pickedFileList!.isNotEmpty){
+      //   setState((){
+      //     resultList = pickedFileList;
+      //
+      //   });
+      //   resultList.addAll(pickedFileList);
+        // }
 
-        });
-        // resultList.addAll(pickedFileList);
-      }
-
-      // resultList = await MultiImagePicker.pickImages(
-      //   maxImages: realMaxImage,
-      //   enableCamera: true,
-      //   selectedAssets: _selectedAsset,
-      //   cupertinoOptions: const CupertinoOptions(
-      //     takePhotoIcon: "chat",
-      //     //backgroundColor: "#${Colors.black.value.toRadixString(16)}",
-      //   ),
-      //   materialOptions: const MaterialOptions(
-      //     actionBarColor: "#abcdef",
-      //     actionBarTitle: "Dofhunt",
-      //     allViewTitle: "All Photos",
-      //     useDetailsView: false,
-      //     selectCircleStrokeColor: "#000000",
-      //   ),
-      // );
+      resultList = await MultiImagePicker.pickImages(
+        maxImages: realMaxImage,
+        enableCamera: true,
+        selectedAssets: _selectedAsset,
+        cupertinoOptions: const CupertinoOptions(
+          takePhotoIcon: "chat",
+          //backgroundColor: "#${Colors.black.value.toRadixString(16)}",
+        ),
+        materialOptions: const MaterialOptions(
+          actionBarColor: "#abcdef",
+          actionBarTitle: "Dofhunt",
+          allViewTitle: "All Photos",
+          useDetailsView: false,
+          selectCircleStrokeColor: "#000000",
+        ),
+      );
 
       if (resultList!.isEmpty) return;
 
@@ -260,11 +260,11 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
           }
         }
 
-        // var thumbData = await r.getThumbByteData(
-        //     _imgWidth!.ceil() * 2, _imgHeight!.ceil() * 2,
-        //     quality: 100);
-        // var placeHolder = Image.memory(thumbData.buffer.asUint8List());
-        var placeHolder = Image.network('https://phocode.com/wp-content/uploads/2020/10/placeholder-1-1.png');
+        var thumbData = await r.getThumbByteData(
+            _imgWidth!.ceil() * 2, _imgHeight!.ceil() * 2,
+            quality: 100);
+        var placeHolder = Image.memory(thumbData.buffer.asUint8List());
+        // var placeHolder = Image.network('https://phocode.com/wp-content/uploads/2020/10/placeholder-1-1.png');
 
         ImageUploadItem imageParam =
         ImageUploadItem(r, imageName!, placeHolder);

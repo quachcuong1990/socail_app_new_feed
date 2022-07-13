@@ -13,10 +13,7 @@ class Routes {
       case '/':
         return _buildRoute(
           settings,
-          BlocProvider(
-            bloc: ListPostsRxDartBloc()..getPosts(),
-            child: const DashboardPage(),
-          ),
+          const DashboardPage(),
         );
       case RouteName.createPostPage:
         return _buildRouteDialog(

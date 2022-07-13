@@ -31,7 +31,7 @@ class ItemRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: GradientAppColor.bg_copy,
+      // color: GradientAppColor.bg_copy,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

@@ -9,11 +9,11 @@ class ConfigEnv{
   static String getDomainAPI(){
     switch(appFlavor){
       case Flavor.staging:
-        return 'https://api.dofhunt.200lab.io';
+        return 'https://api.dofhunt.200lab.io/v1';
       case Flavor.mock:
         return '';
       default:
-        return 'https://api.dofhunt.200lab.io';
+        return 'https://api.dofhunt.200lab.io/v1';
     }
   }
   static String getWebDomain(){

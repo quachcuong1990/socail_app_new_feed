@@ -19,12 +19,12 @@ class ApiProvider{
     return userToken;
   }
   static final ApiProvider _instance = ApiProvider._internal();
-  LogProvider get logger => const LogProvider('⚡️ ApiProvider');
+  LogProvider get logger => const LogProvider('⚡️ ApiProviderVip');
   factory ApiProvider(){
     return _instance;
   }
   ApiProvider._internal(){
-    final baseOption = BaseOptions(baseUrl: '${ConfigEnv.getDomainAPI()}/v1');
+    final baseOption = BaseOptions(baseUrl: ConfigEnv.getDomainAPI());
     _dio = Dio(baseOption);
     setupInterceptors();
     (_dio.transformer as DefaultTransformer).jsonDecodeCallback =

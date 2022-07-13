@@ -70,7 +70,7 @@ class _UploadItemState extends State<UploadItem> {
             fit: BoxFit.cover,)
             :widget.placeHolder??
     Container(
-      color: Color(0xff4A4A4A),
+      color: const Color(0xff4A4A4A),
     ),
         (widget.controller.uri!=null || widget.controller.uri !='') &&
             (widget.controller.progress == 1.0 || widget.controller.progress ==null)
