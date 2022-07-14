@@ -69,6 +69,8 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
     final screeenWidth = MediaQuery.of(context).size.width;
     const magingHorizontal = 16;
     _imgWidth = ((screeenWidth-(magingHorizontal*2-(spacing*(maxImageInRow-1))))~/maxImageInRow).toInt();
+    _imgHeight = (_imgWidth! ~/ aspecRatio).toInt();
+
     return buildGridView();
   }
   Widget buildGridView(){
@@ -80,7 +82,7 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
           mainAxisSpacing: 8
         ),
         shrinkWrap: true,
-        padding: EdgeInsets.only(bottom: 16.0),
+        padding: const EdgeInsets.only(bottom: 16.0),
         physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.isFulGrid?maxImage:min(_listImageParam.length+1,maxImage),
         itemBuilder: (context, index){
@@ -136,7 +138,7 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
       // var originData = await item.asset!.readAsBytes();
       formData = FormData.fromMap({
         'file': MultipartFile.fromBytes(originData.buffer.asInt8List(),
-        filename: '${DateTime.now().microsecond}.jpg'),
+        filename: '${DateTime.now().microsecondsSinceEpoch}.jpg'),
         'folder': widget.folder
       });
       var result = await apiProvider.post('/upload',data: formData,onSendProgress: (int sent,int total){
@@ -242,7 +244,7 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
           selectCircleStrokeColor: "#000000",
         ),
       );
-
+      print('result====${resultList.length}');
       if (resultList!.isEmpty) return;
 
       for (int i = 0; i < resultList!.length; i++) {
@@ -264,8 +266,6 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
             _imgWidth!.ceil() * 2, _imgHeight!.ceil() * 2,
             quality: 100);
         var placeHolder = Image.memory(thumbData.buffer.asUint8List());
-        // var placeHolder = Image.network('https://phocode.com/wp-content/uploads/2020/10/placeholder-1-1.png');
-
         ImageUploadItem imageParam =
         ImageUploadItem(r, imageName!, placeHolder);
         localListImg.add(imageParam);

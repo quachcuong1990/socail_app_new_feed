@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:socail/common/widgets/stateless/loading_hide_keyboard.dart';
 
 import '../../../common/widgets/stateful/upload/manage_group/upload_group_value.dart';
@@ -42,7 +43,11 @@ class _CreatePostPageState extends State<CreatePostPage> {
         elevation: 0,
         centerTitle: true,
         title: const Text('Create Post',style: TextStyle(color: Colors.black),),
-        leading: const Icon(Icons.close,color: Colors.black,),
+        leading: InkWell(
+          onTap: (){
+            Navigator.pop(context);
+          },
+            child: const Icon(Icons.close,color: Colors.black,)),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -74,7 +79,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                         minLines: 5,
                         maxLines: 15,
                         inputFormatters: [
-                          // LengthLimitingTextInputFormatter(300),
+                          LengthLimitingTextInputFormatter(300),
                         ],
                         keyboardType: TextInputType.multiline,
                         textCapitalization: TextCapitalization.sentences,
