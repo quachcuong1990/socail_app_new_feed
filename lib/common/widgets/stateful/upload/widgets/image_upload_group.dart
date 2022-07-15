@@ -153,7 +153,10 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
       item.id = result.data['data']['id'];
       item.picture = Picture.fromJson(result.data['data']['image']);
       item.controller!.progress = 1.0;
+      // item.controller.uri = result.data['data'][xxx]
       controller.value = controller.value.withValue(_listImageParam);
+      setState(() {});
+
 
     }catch(e){
       debugPrint('${e}');

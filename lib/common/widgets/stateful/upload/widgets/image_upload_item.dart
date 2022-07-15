@@ -36,7 +36,7 @@ class ImageUploadItem{
   ImageUploadItem(Asset asset,String name, Image placeHolder){
     _asset = asset;
     _name = _name;
-    _placeHolder = _placeHolder;
+    _placeHolder = placeHolder;
     cancelToken = CancelToken();
     controller = UploadController();
   }
