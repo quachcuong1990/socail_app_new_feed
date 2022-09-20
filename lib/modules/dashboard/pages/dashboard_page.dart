@@ -80,7 +80,8 @@ class _DashboardPageState extends State<DashboardPage> {
                         contentPadding: const EdgeInsets.only(bottom: 36 / 2),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(18.0),
-                            borderSide: BorderSide.none)),
+                            borderSide: BorderSide.none),
+                    ),
                   ),
                 ),
                 Expanded(

@@ -18,8 +18,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
   late final TextEditingController _desCtrl;
   late final FocusNode _focusNodeDes;
   bool isLoading =false;
-  UploadGroupValue _currentGroupUploadValue =
-  const UploadGroupValue(<ImageUploadItem>[]);
+  UploadGroupValue _currentGroupUploadValue = const UploadGroupValue(<ImageUploadItem>[]);
   final _createPostBloc = CreatePostBloc();
 
   @override

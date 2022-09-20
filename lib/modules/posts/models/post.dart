@@ -31,7 +31,7 @@ class Post {
   @JsonKey(name: 'user', includeIfNull: false)
   final User? user;
   @JsonKey(name: 'comment_counts', includeIfNull: false)
-  final int? commentCounts;
+   int? commentCounts;
 
   @JsonKey(name: 'like_counts', includeIfNull: false)
   int? likeCounts;

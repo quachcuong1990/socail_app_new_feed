@@ -10,4 +10,6 @@ class AppStyles{
       color: AppColors.redTextColor,fontWeight: FontWeight.bold);
   static  TextStyle h4 = const TextStyle(fontSize: 34,fontFamily: AppFont.aven,
       color: AppColors.likeColor,fontWeight: FontWeight.bold);
+  static  TextStyle h5 = const TextStyle(fontSize: 13,fontFamily: AppFont.aven,
+      color: AppColors.textColor1);
 }

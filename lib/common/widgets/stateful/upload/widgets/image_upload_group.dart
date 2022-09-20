@@ -99,11 +99,12 @@ class _ImageUploadGroupState extends State<ImageUploadGroup> {
             if(index == _listImageParam.length)return buildItemAddImage(index);
             return Container();
           }
-        });
+        }
+        );
 
   }
   Widget buildItemImage({required ImageUploadItem image,required int index}){
-
+    print('abc==${image.controller!.oriFile?.path}');
     return Stack(
       children: [
         Container(

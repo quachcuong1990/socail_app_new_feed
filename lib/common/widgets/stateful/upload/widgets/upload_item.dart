@@ -46,6 +46,7 @@ class _UploadItemState extends State<UploadItem> {
 
   @override
   Widget build(BuildContext context) {
+    print('uri === ${widget.controller.oriFile}');
     return Stack(
       children: [
         widget.controller.uri!=null?

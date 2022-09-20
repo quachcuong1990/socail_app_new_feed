@@ -35,6 +35,7 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
 
   late final StreamSubscription<BlocEvent> _subDeletePost;
   late final StreamSubscription<BlocEvent> _onLikeAndUnLikePostSub;
+  late final StreamSubscription<BlocEvent> _onCreatPostSub;
 
   final ListPostPagingRepo _repo;
 
@@ -42,6 +43,10 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
     _subDeletePost = AppEventBloc().listenEvent(
       eventName: EventName.deletePost,
       handler: _deletePost,
+    );
+    _onCreatPostSub = AppEventBloc().listenEvent(
+      eventName: EventName.createPost,
+      handler: _onCreatePost,
     );
 
     _onLikeAndUnLikePostSub = AppEventBloc().listenManyEvents(
@@ -51,6 +56,9 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
       ],
       handler: _onLikeAndUnlikePost,
     );
+  }
+  void _onCreatePost(BlocEvent evt){
+     refresh();
   }
 
   Future<void> getPosts() async {

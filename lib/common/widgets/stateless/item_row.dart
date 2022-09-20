@@ -48,6 +48,7 @@ class ItemRow extends StatelessWidget {
             ),
           ),
           rightWidget ?? PopupMenuButton(
+            icon: const Icon(Icons.more_horiz),
               itemBuilder: (context)=>[
                 PopupMenuItem(
                   onTap: (){

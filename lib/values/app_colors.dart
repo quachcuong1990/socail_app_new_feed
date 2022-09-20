@@ -15,6 +15,7 @@ class AppColors{
   static const  Color redTextColor =  Color(0xFFFF2D55);
   static const  Color darkColor =  Color(0xFF1D1D26);
   static const  Color likeColor =  Color(0xFFFFFFFF);
+  static const  Color textColor1 =  Color(0xFF4E586E);
   static final  Color likeColor2 =const  Color(0xFFFFFFFF).withOpacity(0.2);
   static const  Color transparent =  Colors.transparent;
   static final  Color keyboardGreyColor =  const Color(0xFFD2D5DB).withOpacity(0.94);

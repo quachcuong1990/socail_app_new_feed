@@ -33,9 +33,10 @@ class AuthGmail implements AuthLogin {
           await googleSignInAccount.authentication;
 
       print('Token : ${googleSignInAuthentication.accessToken}');
+      print('idToken : ${googleSignInAuthentication.idToken}');
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleSignInAuthentication?.accessToken,
-        idToken: googleSignInAuthentication?.idToken,
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
       );
       final firebaseAccount = await FirebaseAuth.instance.signInWithCredential(credential);
       final user = firebaseAccount.user;

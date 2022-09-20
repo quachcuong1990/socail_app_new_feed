@@ -1,4 +1,6 @@
 
+import 'package:socail/common/blocs/app_event_bloc.dart';
+
 import '../repos/create_post_repo.dart';
 
 class CreatePostBloc {
@@ -6,7 +8,11 @@ class CreatePostBloc {
     try {
       final data = {"description": des, "img_upload_ids": ids};
 
-      return CreatePostRepo().postData(data);
+       final res =  await CreatePostRepo().postData(data);
+       if(res){
+         AppEventBloc().emitEvent(BlocEvent(EventName.createPost));
+       }
+       return res;
     } catch (e) {
       rethrow;
     }

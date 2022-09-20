@@ -57,20 +57,28 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
                 const SizedBox(height: 44.0,
                 ),
-                AppButton(
-                  onPressed: (){},
-                  nameButton: 'Log In',
-                  colorButton: AppColors.likeColor,
-                  colorText: AppColors.redTextColor,
-                  gradient: const LinearGradient(colors: [Color(0xFFFFFFFF),Color(0xFFFFFFFF)]),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: AppButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, '/sign-up-page');
+                    },
+                    nameButton: 'Log In',
+                    colorButton: AppColors.likeColor,
+                    colorText: AppColors.redTextColor,
+                    gradient: const LinearGradient(colors: [Color(0xFFFFFFFF),Color(0xFFFFFFFF)]),
+                  ),
                 ),
 
                 const SizedBox(height: 10.0,),
-                AppButton(
-                  onPressed: (){},
-                  nameButton: 'Sign Up',
-                  colorText: AppColors.likeColor,
-                  gradient: const LinearGradient(colors: [Color(0xFFF78361),Color(0xFFF54B64)]),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: AppButton(
+                    onPressed: (){},
+                    nameButton: 'Sign Up',
+                    colorText: AppColors.likeColor,
+                    gradient: const LinearGradient(colors: [Color(0xFFF78361),Color(0xFFF54B64)]),
+                  ),
                 ),
                 const SizedBox(height: 48.0,),
                 const Text('Or log in with',

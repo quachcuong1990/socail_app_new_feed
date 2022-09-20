@@ -24,9 +24,7 @@ class AppAuth {
   }
 
   /// Signs in with the given [credential].
-  Future<Login?> _signIn(
-      AuthCredential credential
-      ) async {
+  Future<Login?> _signIn(AuthCredential credential) async {
     try {
       final response = await _apiProvider.post(
         credential.url,
@@ -45,9 +43,7 @@ class AppAuth {
   }
 
   /// Signs in with the given [credential].
-  Future<Login?> _signUp(
-      AuthCredential credential,
-      ) async {
+  Future<Login?> _signUp(AuthCredential credential) async {
     // TODO:
   }
 }
